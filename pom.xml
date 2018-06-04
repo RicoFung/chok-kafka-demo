@@ -1,9 +1,8 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>chok-kafka-demo</artifactId>
-	<packaging>war</packaging>
+	<packaging>pom</packaging>
 	<name>chok-kafka-demo</name>
 	<description>chok-kafka-demo</description>
 	<parent>
@@ -18,8 +17,19 @@
 	</properties>
 
 	<dependencies>
-		<dependency><groupId>com.chok</groupId><artifactId>chok-devwork</artifactId></dependency>
+		<dependency><groupId>com.chok</groupId><artifactId>chok-devwork</artifactId>
+			<exclusions>
+		        <exclusion><groupId>org.apache.poi</groupId><artifactId>poi</artifactId></exclusion>
+				<exclusion><groupId>org.apache.poi</groupId><artifactId>poi-ooxml</artifactId></exclusion>
+				<exclusion><groupId>org.apache.poi</groupId><artifactId>poi-ooxml-schemas</artifactId></exclusion>
+				<exclusion><groupId>org.apache.poi</groupId><artifactId>poi-scratchpad</artifactId></exclusion>
+			</exclusions>
+		</dependency>
 		<dependency><groupId>org.springframework.kafka</groupId><artifactId>spring-kafka</artifactId></dependency>
 		<dependency><groupId>org.projectlombok</groupId><artifactId>lombok</artifactId><optional>true</optional></dependency>
 	</dependencies>
+  <modules>
+    <module>chok-kafka-consumer</module>
+    <module>chok-kafka-provider</module>
+  </modules>
 </project>
